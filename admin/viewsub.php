@@ -97,5 +97,6 @@ $fetch= $query->fetchAll(PDO::FETCH_ASSOC);
 
 
     </table>
+    <a href="home.php">Back to home Page</a>
 </body>
 </html>

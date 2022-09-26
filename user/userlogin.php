@@ -80,7 +80,10 @@
 </body>
 </html>
 <?php
-include "pdoconn.php";
-$obj= new adlog();
+include "../admin/controller.php";
+include "../admin/validations.php";
+$validation= new validation();
+$validation->valid();
+$obj= new user();
 $obj->userlogin();
 ?>

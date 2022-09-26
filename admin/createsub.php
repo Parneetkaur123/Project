@@ -84,26 +84,7 @@
 </body>
 </html>
 <?php
- $server= "mysql:host=localhost;dbname=subusers";
- $username= "root";
- $password= "";
-
-$conn= new PDO($server, $username, $password);
-
-if(isset($_POST['submit']))
-{
-    $name= $_POST['username'];
-    $email= $_POST['email'];
-    $password= $_POST['password'];
-
-    if(empty($name) || empty($email) ||  empty($password))
-    {
-        echo "please fill all fields";
-    }
-    else
-    {
-        $query=$conn->query("INSERT INTO subuser (name, email, password) VALUES ('$name', '$email', '$password');");
-        echo "Sub admin created";
-    }
-}
+include "controller.php";
+$obj= new admin();
+$obj->createsub();
 ?>

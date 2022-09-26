@@ -81,11 +81,17 @@
 </body>
 </html>
 <?php
-include "pdoconn.php";
+  $server= "mysql:host=localhost;dbname=admin";
+  $username= "root";
+  $password= "";
+
+  $conn= new PDO($server, $username, $password);
+  
+include "controller.php";
 include "validations.php";
 $validation= new validation();
 $validation->valid();
-$obj= new adlog();
+$obj= new admin();
 $obj->login();
 
 ?>

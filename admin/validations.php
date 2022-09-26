@@ -9,6 +9,7 @@ class validation
            if(empty($_POST['username']) && empty($_POST['password']))
            {
              echo "please fill both fields";
+             exit();
            }
 
         }
@@ -16,7 +17,7 @@ class validation
     }
 
 
-function list()
+   function list()
     {
         if (!empty($_POST['submit']))
       {
@@ -54,5 +55,6 @@ function list()
       }
    }
   }
+  
 }
 ?>

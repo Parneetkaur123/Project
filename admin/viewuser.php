@@ -93,7 +93,6 @@ $run= $obj->fetchAll(PDO::FETCH_ASSOC)
             <td><button2><?php echo "<a href=\"deactive.php?id=".$value['ID']."\">Deactive</a>"?></button></td>
             <td>
                 <?php 
-                // echo $value['status']
                 if($value['status']==0)
                 {
                     echo "deactive";

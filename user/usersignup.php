@@ -78,10 +78,11 @@
         <input type="password" name="password" placeholder="enter Password"/><br><br>
         <button type="submit" name="submit" value="submit">Submit</button>
 </form>
+<a href="userlogin.php">Login here</a>
 </body>
 </html>
 <?php
-include "pdoconn.php";
-$obj= new adlog();
+include "../admin/controller.php";
+$obj= new user();
 $obj->usersignup();
 ?>

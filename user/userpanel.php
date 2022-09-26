@@ -86,7 +86,8 @@
     }
        ?>
         
-</table>
+</table><br><br>
+<button2><a href="userlogin.php">Logout</a></button>
 </body>
 </html>
 

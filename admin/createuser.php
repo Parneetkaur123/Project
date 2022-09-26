@@ -84,7 +84,7 @@
 </body>
 </html>
 <?php
-include "pdoconn.php";
-$obj= new adlog();
+include "controller.php";
+$obj= new admin();
 $obj->createuser();
 ?>

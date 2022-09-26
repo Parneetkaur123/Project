@@ -83,11 +83,11 @@
 </html>
 <?php
 
-include "validations.php";
+include "../admin/validations.php";
 $validation= new validation();
 $validation->valid();
 
-include "pdoconn.php";
-$obj= new adlog();
+include "../admin/controller.php";
+$obj= new subadmin();
 $obj->sublogin();
 ?>

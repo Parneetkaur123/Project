@@ -94,10 +94,9 @@
 </body>
 </html>
 <?php
-include "pdoconn.php";
-// include "validations.php";
-$obj= new adlog();
+include "controller.php";
+
+$obj= new admin();
 $obj->createblog();
-// $validation= new validation();
-// $validation->list();
+
 ?>

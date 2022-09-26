@@ -12,6 +12,7 @@
  $tittle= $fetch['Tittle'];
  $des= $fetch['Description'];
  }
+
 ?>
 
 <!DOCTYPE html>
@@ -110,6 +111,7 @@
       $conn->exec("UPDATE blogs SET Tittle= '$tittle', Description= '$description' where id='$id'");
       header('location: viewblog.php');
     }
+ 
 
 ?>  
 

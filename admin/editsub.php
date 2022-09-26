@@ -14,6 +14,7 @@
     $pass= $store['password'];
    }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
