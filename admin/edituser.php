@@ -1,13 +1,10 @@
 <?php
-    $server= "mysql:host=localhost;dbname=userdata";
-    $username= "root";
-    $password= "";
- 
-   $conn= new PDO($server, $username, $password);
+include "pdoconn.php";
+    
    if(isset($_GET['id']))
    {
     $id= $_GET['id'];
-    $sql= $conn->query("SELECT * FROM user where ID= $id");
+    $sql= $conn->query("SELECT * FROM users where ID= $id");
     $store= $sql->fetch(PDO::FETCH_ASSOC);
     $name= $store['Name'];
     $email= $store['Email'];
@@ -95,15 +92,11 @@
         <input type="email" name="email"  value="<?php echo $email ?>"/><br><br>
         <label>Password</label>
         <input type="text" name="password" value="<?php echo $pass ?>"/><br><br>
-        <label>Confirm Password</label>
-        <input type="password" name="confirmpassword" value=""/><br><br>
+        <!-- <label>Confirm Password</label>
+        <input type="password" name="confirmpassword" value=""/><br><br> -->
         <button type="submit" name="submit" value="submit">Submit</button>
         <a href="viewuser.php">Back</a>
-        <?php
-        include "validations.php";
-        $obj= new validation();
-        $obj->password();
-        ?>
+      
     </form>
 </body>
 </html>
@@ -116,8 +109,33 @@ if(isset($_POST['submit']))
     $name= $_POST['name'];
     $email= $_POST['email'];
     $pass= $_POST['password'];
-    $conn->exec("UPDATE user SET Name = '$name', Email = '$email', Password = '$pass' WHERE ID=$id");
-    header('location: viewuser.php');
+    
+    if(empty($name) && empty($email) && empty($pass))
+    {
+        echo "all fields are mandatory";
+        exit();
+    }
+    elseif(empty($name))
+    {
+        echo "name is mandatory";
+        exit();
+    }
+    elseif(empty($email))
+    {
+        echo "email is mandatory";
+        exit();
+    }
+    elseif(empty($pass))
+    {
+        echo "password is mandatory";
+        exit();
+    }
+   
+    else
+    {
+        $conn->exec("UPDATE users SET Name = '$name', Email = '$email', Password = '$pass' WHERE ID=$id");
+        header('location: viewuser.php');
+    }
 }
 ?>
 

@@ -1,13 +1,10 @@
 <?php
-    $server= "mysql:host=localhost;dbname=subusers";
-    $username= "root";
-    $password= "";
- 
-   $conn= new PDO($server, $username, $password);
+include "pdoconn.php";
+   
    if(isset($_GET['id']))
    {
     $id= $_GET['id'];
-    $sql= $conn->query("SELECT * FROM subuser where ID= $id");
+    $sql= $conn->query("SELECT * FROM subadmin where ID= $id");
     $store= $sql->fetch(PDO::FETCH_ASSOC);
     $name= $store['name'];
     $email= $store['email'];
@@ -96,15 +93,11 @@
         <input type="email" name="email"  value="<?php echo $email ?>"/><br><br>
         <label>Password</label>
         <input type="text" name="password" value="<?php echo $pass ?>"/><br><br>
-        <label>Confirm Password</label>
-        <input type="password" name="confirmpassword" value=""/><br><br>
+        <!-- <label>Confirm Password</label>
+        <input type="password" name="confirmpassword" value=""/><br><br> -->
         <button type="submit" name="submit" value="submit">Submit</button>
         <a href="viewsub.php">Back</a>
-        <?php
-        include "validations.php";
-        $obj= new validation();
-        $obj->password();
-        ?>
+       
     </form>
 </body>
 </html>
@@ -117,8 +110,31 @@ if(isset($_POST['submit']))
     $name= $_POST['name'];
     $email= $_POST['email'];
     $pass= $_POST['password'];
-    $conn->exec("UPDATE subuser SET name = '$name', email = '$email', password = '$pass' WHERE ID=$id");
-    header('location: viewsub.php');
+    if(empty($name))
+    {
+        echo "name is mandatory";
+        exit();
+    }
+    elseif(empty($email))
+    {
+        echo "email is mandatory";
+        exit();
+    }
+    elseif(empty($pass))
+    {
+        echo "password is mandatory";
+        exit();
+    }
+    elseif(empty($name) && empty($email) && empty($pass))
+    {
+        echo "All fields are mandatory";
+        exit();
+    }
+    else
+    {
+        $conn->exec("UPDATE subadmin SET name = '$name', email = '$email', password = '$pass' WHERE ID=$id");
+        header('location: viewsub.php');
+    }
 }
 ?>
 

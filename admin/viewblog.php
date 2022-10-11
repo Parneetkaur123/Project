@@ -1,10 +1,6 @@
 <?php
- $server= "mysql:host=localhost;dbname=blog";
- $username= "root";
- $password= "";
-
- $conn= new PDO($server, $username, $password);
- $store= $conn->query("SELECT * FROM blogs");
+include "pdoconn.php";
+  $store= $conn->query("SELECT * FROM blog");
  $fetch= $store->FetchAll(PDO::FETCH_ASSOC);
 
 ?> 
@@ -58,6 +54,7 @@
         border: none;
 
     }
+   
 </style>
 <body>
     <h1>View Blog</h1>
@@ -68,29 +65,25 @@
             <th>Description</th>
             <th>Edit</th>
             <th>Delete</th>
-            <th>Likes</th>
-            <th>Dislike</th>
+          
        </tr>
        <?php
-       foreach($fetch as $key=>$value)
-       {
+         foreach($fetch as $key=>$value)
+         {
         ?>
        <tr>
-           
             <td><?php echo $value['Tittle']; ?></td>
             <td><?php echo $value['Description'] ?></td>
             <td><button1><?php echo "<a href=\"edit.php?id=".$value['ID']."\">Edit</a>"?></button></td>
             <td><button2><?php echo "<a href=\"delete.php?id=".$value['ID']."\">Delete</a>"?></button></td>
-            <td><?php echo $value['likes']; ?></td>
-            <td><?php echo $value['dislikes']; ?></td>
-       
+         
         </tr>
-       <?php
-       
-    }
-       ?>
-        
+        <?php
+         }
+        ?>
+     
 </table>
+
 <a href="home.php">Back to home Page</a>
 </body>
 </html>

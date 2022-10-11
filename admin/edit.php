@@ -1,13 +1,9 @@
 <?php
- $server= "mysql:host=localhost;dbname=blog";
- $username= "root";
- $password= "";
-
- $conn= new PDO($server, $username, $password);
- if(isset($_GET['id']))
+include "pdoconn.php";
+  if(isset($_GET['id']))
  {
  $id= $_GET['id'];
- $data = $conn->query( "SELECT * FROM blogs WHERE id= $id");
+ $data = $conn->query( "SELECT * FROM blog WHERE id= $id");
  $fetch = $data->fetch(PDO::FETCH_ASSOC);
  $tittle= $fetch['Tittle'];
  $des= $fetch['Description'];
@@ -104,14 +100,36 @@
 <?php 
    if(isset($_POST['submit']))
     {
-        $id= $_GET['id'];
+      $id= $_GET['id'];
       $tittle= $_POST['tittle'];
       $description= $_POST['description'];
-    
-      $conn->exec("UPDATE blogs SET Tittle= '$tittle', Description= '$description' where id='$id'");
+      if(empty($tittle) && empty($description))
+      {
+        echo "please fill both fields";
+        exit();
+      }
+      elseif(empty($_POST['tittle']))
+      {
+        echo "tittle is mandatory";
+        exit();
+      }
+      elseif(empty ($_POST['description']))
+      {
+        echo "description is mandatory";
+        exit();
+      }
+    else
+    {
+      $conn->exec("UPDATE blog SET Tittle= '$tittle', Description= '$description' where ID='$id'");
       header('location: viewblog.php');
+    }
     }
  
 
-?>  
+?> 
+
+       
+       
+
+
 

@@ -45,16 +45,18 @@ class validation
        if(empty($confirm))
        {
           echo "please confirm password";
+          exit();
        }
        else
        {
        if($pass != $confirm)
        {
            echo "password incorrect";
+           exit();
        }
       }
    }
   }
-  
+
 }
 ?>

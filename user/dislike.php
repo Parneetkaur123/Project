@@ -2,5 +2,5 @@
 
 include "../admin/controller.php";
 $obj= new user();
-$obj->dislike();
+$obj->like();
 ?>

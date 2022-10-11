@@ -1,10 +1,7 @@
 <?php
-$server= "mysql:host=localhost;dbname=subusers";
-$username= "root";
-$password= "";
+include "pdoconn.php";
 
-$conn= new PDO($server, $username, $password);
-$query= $conn->query("SELECT * FROM subuser");
+$query= $conn->query("SELECT * FROM subadmin");
 $fetch= $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
@@ -79,17 +76,15 @@ $fetch= $query->fetchAll(PDO::FETCH_ASSOC);
         </tr>
         
         <?php
-          foreach($fetch as $key=>$value)
+          foreach($fetch as $keys=>$values)
           {
         ?>
         <tr>
-            <td><?php echo $value['name'] ?></td>
-            <td><?php echo $value['email'] ?></td>
-            <td><?php echo $value['password'] ?></td>
-            <td><button1><?php echo "<a href=\"editsub.php?id=".$value['ID']."\">Edit</a>"?></button></td>
-            <td><button2><?php echo "<a href=\"deletesub.php?id=".$value['ID']."\">Delete</a>"?></button></td>
-            
-   
+            <td><?php echo $values['name'] ?></td>
+            <td><?php echo $values['email'] ?></td>
+            <td><?php echo $values['password'] ?></td>
+            <td><button1><?php echo "<a href=\"editsub.php?id=".$values['ID']."\">Edit</a>"?></button></td>
+            <td><button2><?php echo "<a href=\"deletesub.php?id=".$values['ID']."\">Delete</a>"?></button></td>
         </tr>
         <?php
          }

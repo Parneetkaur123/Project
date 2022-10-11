@@ -71,7 +71,7 @@
     </style>
 <body>
     <form action="" method="post">
-        <h2>Sub admin Login</h2>
+        <h2>Create Sub admin</h2>
         <label>Username<label>
             <input type="text" name="username" />
             <label>Email<label>

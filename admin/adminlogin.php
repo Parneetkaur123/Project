@@ -80,6 +80,7 @@
     </form>
 </body>
 </html>
+
 <?php
   $server= "mysql:host=localhost;dbname=admin";
   $username= "root";

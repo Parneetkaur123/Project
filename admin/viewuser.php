@@ -1,10 +1,7 @@
 <?php
-$server= "mysql:host=localhost;dbname=userdata";
-$username= "root";
-$password= "";
+include "pdoconn.php";
 
-$conn= new PDO($server, $username, $password);
-$obj= $conn->query("SELECT * FROM user");
+$obj= $conn->query("SELECT * FROM users");
 $run= $obj->fetchAll(PDO::FETCH_ASSOC)
 
 ?>
